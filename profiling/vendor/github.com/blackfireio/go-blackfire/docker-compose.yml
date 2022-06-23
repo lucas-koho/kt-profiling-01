@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    go_dashboard:
+        build:
+            context: docker/
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/app
+            - ~/.ssh:/home/node/.ssh:ro
+        environment:
+            - "NODE_OPTIONS=--openssl-legacy-provider"
+        working_dir: /app/dashboard
